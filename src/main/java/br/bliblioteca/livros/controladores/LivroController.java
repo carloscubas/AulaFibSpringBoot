@@ -16,7 +16,7 @@ import br.bliblioteca.livros.model.Livro;
 public class LivroController {
 
 	@GetMapping("/list")
-	public ModelAndView livros() {		
+	public ModelAndView livros() {
 		ModelAndView modelAndView = new ModelAndView("livros/list");
 		modelAndView.addObject("livros", Arrays.asList(new Livro()));
 		return modelAndView;
@@ -29,7 +29,7 @@ public class LivroController {
 	}
 
 	@PostMapping(value = "/gravar")
-	public ModelAndView create() {
+	public ModelAndView create(Livro livro) {
 		return new ModelAndView("redirect:/livros/list");
 	}
 
