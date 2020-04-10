@@ -1,7 +1,6 @@
 package br.bliblioteca.livros.controladores;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,5 +43,4 @@ public class LivroController {
 	public ModelAndView excluir(@PathVariable("id") Long id) {
 		return new ModelAndView("redirect:/livros/list");
 	}
-
 }

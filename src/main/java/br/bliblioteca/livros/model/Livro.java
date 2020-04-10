@@ -1,7 +1,5 @@
 package br.bliblioteca.livros.model;
 
-import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,18 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "LIVRO")
-public class Livro implements Serializable {
-
-	private static final long serialVersionUID = 5663066928725353351L;
+@Table(name = "LIVROS")
+public class Livro  {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	@Column(name = "LIVRO_NOME")
 	private String nome;
 
-	@Column(name = "QUANTIDADEPAGINAS")
+	@Column(name = "LIVRO_QUANTIDADE_PAGINAS")
 	private int quantidadePaginas;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
