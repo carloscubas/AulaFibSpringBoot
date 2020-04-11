@@ -1,4 +1,4 @@
-package br.bliblioteca.livros;
+package br.biblioteca.livros;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -12,8 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.servlet.ModelAndView;
-import br.bliblioteca.livros.controladores.LivroController;
-import br.bliblioteca.livros.model.Livro;
+
+import br.biblioteca.livros.controladores.LivroController;
+import br.biblioteca.livros.model.Livro;
 
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;

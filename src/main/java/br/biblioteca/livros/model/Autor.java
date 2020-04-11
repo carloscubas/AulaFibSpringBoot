@@ -1,4 +1,4 @@
-package br.bliblioteca.livros.model;
+package br.biblioteca.livros.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

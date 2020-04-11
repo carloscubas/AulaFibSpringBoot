@@ -1,4 +1,4 @@
-package br.bliblioteca.livros.controladores;
+package br.biblioteca.livros.controladores;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.bliblioteca.livros.model.Livro;
-import br.bliblioteca.livros.service.LivrosService;
+import br.biblioteca.livros.model.Livro;
+import br.biblioteca.livros.service.LivrosService;
 
 @Controller
 @RequestMapping("/livros")

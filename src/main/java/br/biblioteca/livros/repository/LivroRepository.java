@@ -1,4 +1,4 @@
-package br.bliblioteca.livros.repository;
+package br.biblioteca.livros.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import br.bliblioteca.livros.model.Livro;
+import br.biblioteca.livros.model.Livro;
 
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long> {

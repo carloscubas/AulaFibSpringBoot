@@ -1,4 +1,4 @@
-package br.bliblioteca.livros.service;
+package br.biblioteca.livros.service;
 
 import org.springframework.stereotype.Service;
 
