@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.biblioteca.livros.model.Autor;
 import br.biblioteca.livros.model.Livro;
+import br.biblioteca.livros.service.AutorService;
 import br.biblioteca.livros.service.LivrosService;
 
 @Controller
@@ -20,19 +22,22 @@ public class LivroController {
 	@Autowired
 	LivrosService livroService;
 
+	@Autowired
+	AutorService autorService;
+
 	@GetMapping("/list")
 	public ModelAndView livros() {
 		ModelAndView modelAndView = new ModelAndView("livros/list");
-
 		List<Livro> listaLivros = livroService.listaTodosLivros();
 		modelAndView.addObject("livros", listaLivros);
-
 		return modelAndView;
 	}
 
 	@GetMapping("/novo")
 	public ModelAndView createForm() {
 		ModelAndView modelAndView = new ModelAndView("livros/form");
+		List<Autor> listaAutores = autorService.listaAutores();
+		modelAndView.addObject("listaAutores", listaAutores);
 		return modelAndView;
 	}
 
