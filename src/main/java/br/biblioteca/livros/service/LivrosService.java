@@ -22,4 +22,8 @@ public class LivrosService {
 		livroRepository.save(livro);
 	}
 
+	public Livro buscaLivro(Long id) {
+		return livroRepository.findById(id).orElseThrow(() -> new RuntimeException());
+	}
+
 }

@@ -50,7 +50,13 @@ public class LivroController {
 
 	@GetMapping("/alterar/{id}")
 	public ModelAndView alterar(@PathVariable("id") Long id) {
+
+		Livro livro = livroService.buscaLivro(id);
+		List<Autor> listaAutores = autorService.listaAutores();
+
 		ModelAndView modelAndView = new ModelAndView("livros/form");
+		modelAndView.addObject("listaAutores", listaAutores);
+		modelAndView.addObject("livro", livro);
 		return modelAndView;
 	}
 
