@@ -12,11 +12,16 @@
 	
 </head>
 <body>
-<form method="post" action="/livros/gravar">
-    Nome: <input type="text" name="nome">
-    Quantidade Páginas: <input type="text" name="quantidadePaginas"> 
-    <input type="submit">
-</form>
+	<form method="post" action="#" th:action="@{/livros/gravar}" th:object="${livro}">
+	    Nome: <input type="text" name="nome"><br>
+	    Quantidade Páginas: <input type="text" name="quantidadePaginas"><br>
+	    Autor: <select th:field="*{autor}">
+	        	<option value="">Selecione o Autor</option>
+	        	<option th:each="autor : ${listaAutores}" th:value="${autor.id}" th:text="${autor.nome} " selected="selected"></option>
+	    	</select><br>
+	
+	    <input type="submit">
+	</form>
 
 	<script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}" ></script>
 	<script type="text/javascript" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.js}" ></script>

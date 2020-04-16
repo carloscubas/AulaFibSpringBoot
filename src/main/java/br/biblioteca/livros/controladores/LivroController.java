@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,7 @@ public class LivroController {
 	}
 
 	@GetMapping("/novo")
-	public ModelAndView createForm() {
+	public ModelAndView createForm(@ModelAttribute Livro livro) {
 		ModelAndView modelAndView = new ModelAndView("livros/form");
 		List<Autor> listaAutores = autorService.listaAutores();
 		modelAndView.addObject("listaAutores", listaAutores);
@@ -43,7 +44,7 @@ public class LivroController {
 
 	@PostMapping(value = "/gravar")
 	public ModelAndView create(Livro livro) {
-
+		livroService.salvarLivro(livro);
 		return new ModelAndView("redirect:/livros/list");
 	}
 
