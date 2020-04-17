@@ -26,4 +26,8 @@ public class LivrosService {
 		return livroRepository.findById(id).orElseThrow(() -> new RuntimeException());
 	}
 
+	public void excluiLivro(Long id) {
+		livroRepository.deleteById(id);
+	}
+
 }

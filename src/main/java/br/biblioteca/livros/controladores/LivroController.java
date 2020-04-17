@@ -52,6 +52,7 @@ public class LivroController {
 	public ModelAndView alterar(@PathVariable("id") Long id) {
 
 		Livro livro = livroService.buscaLivro(id);
+
 		List<Autor> listaAutores = autorService.listaAutores();
 
 		ModelAndView modelAndView = new ModelAndView("livros/form");
@@ -62,6 +63,7 @@ public class LivroController {
 
 	@GetMapping("/excluir/{id}")
 	public ModelAndView excluir(@PathVariable("id") Long id) {
+		livroService.excluiLivro(id);
 		return new ModelAndView("redirect:/livros/list");
 	}
 }
