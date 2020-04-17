@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "LIVRO")
@@ -19,9 +21,11 @@ public class Livro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotEmpty
 	@Column(name = "NOME")
 	private String nome;
 
+	@Min(10)
 	@Column(name = "LIVRO_QUANTIDADE_PAGINAS")
 	private int quantidadePaginas;
 

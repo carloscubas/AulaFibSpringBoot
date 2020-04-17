@@ -27,8 +27,8 @@
 			<td th:text="${livro?.nome}">nome do livro</td>
 			<td th:text="${livro?.autor?.nome}">nome do autor</td>
 			<td th:text="${livro?.quantidadePaginas}">total de páginas do livro</td>
-			<td><a href="#" th:href="@{'/livros/alterar/'+${livro.id}}">Alterar</a></td>
-			<td><a href="#" th:href="@{'/livros/excluir/'+${livro.id}}">Excluir</a></td>
+			<td><a href="/livros/alterar/1" th:href="@{'/livros/alterar/'+${livro.id}}">Alterar</a></td>
+			<td><a href="/livros/alterar/1" th:href="@{'/livros/excluir/'+${livro.id}}">Excluir</a></td>
 		</tr>
 	</table>
 	
