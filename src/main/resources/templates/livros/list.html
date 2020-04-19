@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-  	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  	layout:decorate="layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
 <head>
-	<meta charset="UTF-8" />
-	<title>Livros</title>
-		<!-- Bootstrap -->
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap-theme.min.css}" />
-	<link rel="stylesheet" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.css}" />
-	
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
 </head>
 <body>
-	<a href="#" th:href="@{/livros/novo}">Novo</a>
+
+<h1 layout:fragment="header">
+    <a th:href="@{/livros/novo}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-plus"></i></a>
+    Livros
+</h1>
+
+<div layout:fragment="content" class="container">	
 	<table>
 		<tr>
 			<th>ID DO LIVRO</th>
@@ -31,10 +32,6 @@
 			<td><a href="/livros/alterar/1" th:href="@{'/livros/excluir/'+${livro.id}}">Excluir</a></td>
 		</tr>
 	</table>
-	
-	<script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}" ></script>
-	<script type="text/javascript" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.js}" ></script>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}" ></script>
-	
+</div>
 </body>
 </html>

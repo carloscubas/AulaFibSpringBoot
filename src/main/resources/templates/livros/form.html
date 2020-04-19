@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-  	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  	layout:decorate="layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
 <head>
-	<meta charset="UTF-8" />
-	<title>Livros</title>
-		<!-- Bootstrap -->
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap-theme.min.css}" />
-	<link rel="stylesheet" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.css}" />
-	
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="#" th:action="@{/livros/gravar}" th:object="${livro}">
-		<input type="hidden" th:field="*{id}">
-	    Nome: <input type="text" th:field="*{nome}">
-	    <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error</span><br>
-	    Quantidade Páginas: <input type="text" th:field="*{quantidadePaginas}">
-	    <span  th:if="${#fields.hasErrors('quantidadePaginas')}" th:errors="*{quantidadePaginas}">Error</span><br>
-	    Autor: <select th:field="*{autor}">
-	        	<option value="">Selecione o Autor</option>
-	        	<option th:each="autor : ${listaAutores}" th:value="${autor.id}" th:text="${autor.nome} " selected="selected"></option>
-	    	</select><br>
+
+	<nav layout:fragment="header" aria-label="breadcrumb" role="navigation">
+	    <ol class="breadcrumb">
+	        <li class="breadcrumb-item"><a href="#" th:href="@{/livros/list}">Livros</a></li>
+	        <li class="breadcrumb-item active" aria-current="page">Novo Livro</li>
+	    </ol>
+	</nav>
 	
-	    <input type="submit">
-	</form>
-
-	<script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}" ></script>
-	<script type="text/javascript" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.js}" ></script>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}" ></script>
-
+	<div layout:fragment="content" class="container">
+		<form method="post" action="#" th:action="@{/livros/gravar}" th:object="${livro}">
+			<input type="hidden" th:field="*{id}">
+		    Nome: <input type="text" th:field="*{nome}">
+		    <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error</span><br>
+		    Quantidade Páginas: <input type="text" th:field="*{quantidadePaginas}">
+		    <span  th:if="${#fields.hasErrors('quantidadePaginas')}" th:errors="*{quantidadePaginas}">Error</span><br>
+		    Autor: <select th:field="*{autor}">
+		        	<option value="">Selecione o Autor</option>
+		        	<option th:each="autor : ${listaAutores}" th:value="${autor.id}" th:text="${autor.nome} " selected="selected"></option>
+		    	</select><br>
+		
+		    <input type="submit">
+		</form>
+	</div>
 </body>
 </html>
