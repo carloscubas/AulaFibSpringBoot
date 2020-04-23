@@ -21,6 +21,9 @@ public class ApiController {
 	@Autowired
 	LivrosService livrosService;
 
+	/*
+	 * tras os livros cadastrados
+	 */
 	@GetMapping("/livros/list")
 	public ResponseEntity<List<LivroDTO>> livros() {
 		List<Livro> listaLivros = livrosService.listaTodosLivros();
