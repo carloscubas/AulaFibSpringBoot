@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.biblioteca.livros.dto.AvaliacaoDTO;
 import br.biblioteca.livros.dto.LivroDTO;
+import br.biblioteca.livros.exception.LivroNotFoundException;
 import br.biblioteca.livros.facade.ApiFacade;
 import br.biblioteca.livros.model.Livro;
 
@@ -36,9 +37,11 @@ public class ApiController {
 
 	@PostMapping("/livro/avaliacao/{id}")
 	public ResponseEntity<Long> comentario(@PathVariable("id") Long id, @RequestBody AvaliacaoDTO avaliacaoDTO) {
-
-		return ResponseEntity.ok(1l);
-
+		try {
+			return ResponseEntity.ok(apiController.salvarAvaliacao(id, avaliacaoDTO));
+		} catch (LivroNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 }

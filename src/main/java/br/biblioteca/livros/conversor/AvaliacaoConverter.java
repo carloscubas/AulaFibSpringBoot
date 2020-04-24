@@ -1,5 +1,8 @@
 package br.biblioteca.livros.conversor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import br.biblioteca.livros.dto.AvaliacaoDTO;
 import br.biblioteca.livros.model.Avaliacao;
 import br.biblioteca.livros.model.Livro;
@@ -19,6 +22,17 @@ public class AvaliacaoConverter {
 		avaliacao.setNota(avaliacaoDTO.getNota());
 		avaliacao.setLivro(livro);
 		return avaliacao;
+	}
+
+	public static AvaliacaoDTO toDTO(Avaliacao avaliacao) {
+		AvaliacaoDTO dto = new AvaliacaoDTO();
+		dto.setComentario(avaliacao.getComentario());
+		dto.setNota(avaliacao.getNota());
+		return dto;
+	}
+
+	public static List<AvaliacaoDTO> toDTO(List<Avaliacao> avaliacoes) {
+		return avaliacoes.stream().map(a -> toDTO(a)).collect(Collectors.toList());
 	}
 
 }

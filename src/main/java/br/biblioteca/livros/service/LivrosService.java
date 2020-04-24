@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.biblioteca.livros.exception.LivroNotFoundException;
 import br.biblioteca.livros.model.Livro;
 import br.biblioteca.livros.repository.LivroRepository;
 
@@ -23,7 +24,7 @@ public class LivrosService {
 	}
 
 	public Livro buscaLivro(Long id) {
-		return livroRepository.findById(id).orElseThrow(() -> new RuntimeException());
+		return livroRepository.findById(id).orElseThrow(() -> new LivroNotFoundException());
 	}
 
 	public void excluiLivro(Long id) {

@@ -1,5 +1,8 @@
 package br.biblioteca.livros.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LivroDTO {
 
 	private String titulo;
@@ -7,6 +10,16 @@ public class LivroDTO {
 	private int paginas;
 
 	private String autor;
+
+	private List<AvaliacaoDTO> avaliacoes = new ArrayList<AvaliacaoDTO>();
+
+	public List<AvaliacaoDTO> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(List<AvaliacaoDTO> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
 
 	public String getTitulo() {
 		return titulo;
