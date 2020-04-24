@@ -4,7 +4,7 @@ import br.biblioteca.livros.dto.AvaliacaoDTO;
 import br.biblioteca.livros.model.Avaliacao;
 import br.biblioteca.livros.model.Livro;
 
-public class AvaliacaoConversor {
+public class AvaliacaoConverter {
 
 	public static Avaliacao toModel(AvaliacaoDTO avaliacaoDTO) {
 		Avaliacao avaliacao = new Avaliacao();
