@@ -15,22 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.biblioteca.livros.dto.AvaliacaoDTO;
 import br.biblioteca.livros.dto.LivroDTO;
+import br.biblioteca.livros.facade.ApiFacade;
 import br.biblioteca.livros.model.Livro;
-import br.biblioteca.livros.service.LivrosService;
 
 @RestController
 @RequestMapping("/api")
 public class ApiController {
 
 	@Autowired
-	LivrosService livrosService;
+	ApiFacade apiController;
 
 	/*
 	 * tras os livros cadastrados
 	 */
 	@GetMapping("/livros/list")
 	public ResponseEntity<List<LivroDTO>> livros() {
-		List<Livro> listaLivros = livrosService.listaTodosLivros();
+		List<Livro> listaLivros = apiController.listaTodosLivros();
 		return ResponseEntity.ok(toDTO(listaLivros));
 	}
 
