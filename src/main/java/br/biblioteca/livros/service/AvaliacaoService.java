@@ -12,8 +12,8 @@ public class AvaliacaoService {
 	@Autowired
 	AvaliacaoRepository avaliacaoRepository;
 
-	public void salvaAvaliacao(Avaliacao avaliacao) {
-		avaliacaoRepository.save(avaliacao);
+	public Long salvaAvaliacao(Avaliacao avaliacao) {
+		return avaliacaoRepository.save(avaliacao).getId();
 	}
 
 }
