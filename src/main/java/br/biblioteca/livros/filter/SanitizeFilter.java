@@ -26,12 +26,17 @@ public class SanitizeFilter implements Filter {
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        chain.doFilter(new XSSRequestWrapper((HttpServletRequest) request), response);
-
-        HttpServletRequest req = new XSSRequestWrapper((HttpServletRequest) request);
-        LOG.info("Starting Sanitization for req :{}", req.getRequestURI());
-        chain.doFilter(request, response);
-        LOG.info("Finish Sanitization for req :{}", req.getRequestURI());
+    	
+    	String path = ((HttpServletRequest) request).getServletPath();
+        if (path.toLowerCase().startsWith("/webjars")) {
+            request.getRequestDispatcher(path).forward(request, response);
+        } else {
+            HttpServletRequest req = new XSSRequestWrapper((HttpServletRequest) request);
+            LOG.info("Starting Sanitization for req :{}", req.getRequestURI());
+            chain.doFilter(req, response);
+            LOG.info("Finish Sanitization for req :{}", req.getRequestURI());
+        }
+    	
     }
 
     @Override

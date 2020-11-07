@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 import org.owasp.encoder.Encode;
+import org.owasp.esapi.ESAPI;
 
 public class XSSRequestWrapper extends HttpServletRequestWrapper {
  
@@ -44,7 +45,9 @@ public class XSSRequestWrapper extends HttpServletRequestWrapper {
  
     private String stripXSS(String value) {
         if (value != null) {
-            value = Encode.forHtml(value);
+        	
+        	value = ESAPI.encoder().canonicalize(value);
+            // value = Encode.forHtml(value);
  
             // Avoid null characters
             value = value.replaceAll("", "");
