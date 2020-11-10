@@ -16,9 +16,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(1)
-public class SanitizeFilter implements Filter {
+public class XSSSanitizeVariablesFilter implements Filter {
 
-    private final static Logger LOG = LoggerFactory.getLogger(SanitizeFilter.class);
+    private final static Logger LOG = LoggerFactory.getLogger(XSSSanitizeVariablesFilter.class);
 
     @Override
     public void init(final FilterConfig filterConfig) throws ServletException {
@@ -32,6 +32,7 @@ public class SanitizeFilter implements Filter {
             request.getRequestDispatcher(path).forward(request, response);
         } else {
             HttpServletRequest req = new XSSRequestWrapper((HttpServletRequest) request);
+            
             LOG.info("Starting Sanitization for req :{}", req.getRequestURI());
             chain.doFilter(req, response);
             LOG.info("Finish Sanitization for req :{}", req.getRequestURI());

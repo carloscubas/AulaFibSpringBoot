@@ -26,24 +26,29 @@ import br.biblioteca.livros.model.Livro;
 public class ApiController {
 
 	@Autowired
-	ApiFacade apiController;
+	ApiFacade apiFacade;
 
 	/*
 	 * tras os livros cadastrados
 	 */
 	@GetMapping("/livros/list")
 	public ResponseEntity<List<LivroDTO>> livros() {
-		List<Livro> listaLivros = apiController.listaTodosLivros();
+		List<Livro> listaLivros = apiFacade.listaTodosLivros();
 		return ResponseEntity.ok(toDTO(listaLivros));
 	}
 
 	@PostMapping("/livro/avaliacao/{id}")
 	public ResponseEntity<Long> comentario(@PathVariable("id") Long id, @Valid @RequestBody AvaliacaoDTO avaliacaoDTO) {
 		try {
-			return ResponseEntity.ok(apiController.salvarAvaliacao(id, avaliacaoDTO));
+			return ResponseEntity.ok(apiFacade.salvarAvaliacao(id, avaliacaoDTO));
 		} catch (LivroNotFoundException e) {
 			return ResponseEntity.notFound().build();
 		}
+	}
+	
+	@PostMapping("/livro")
+	public ResponseEntity<Long> savebook(@Valid @RequestBody LivroDTO livroDto) {
+		return ResponseEntity.ok(apiFacade.salvarLivro(livroDto));
 	}
 
 }

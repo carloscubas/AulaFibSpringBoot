@@ -2,11 +2,14 @@ package br.biblioteca.livros.facade;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.biblioteca.livros.conversor.AvaliacaoConverter;
 import br.biblioteca.livros.dto.AvaliacaoDTO;
+import br.biblioteca.livros.dto.LivroDTO;
 import br.biblioteca.livros.model.Avaliacao;
 import br.biblioteca.livros.model.Livro;
 import br.biblioteca.livros.service.AvaliacaoService;
@@ -20,7 +23,7 @@ public class ApiFacade {
 
 	@Autowired
 	AvaliacaoService avaliacaoServico;
-
+	
 	public List<Livro> listaTodosLivros() {
 		return livrosService.listaTodosLivros();
 	}
@@ -29,6 +32,13 @@ public class ApiFacade {
 		Livro livro = livrosService.buscaLivro(idLivro);
 		Avaliacao avaliacao = AvaliacaoConverter.toModel(avaliacaoDTO, livro);
 		return avaliacaoServico.salvaAvaliacao(avaliacao);
+	}
+
+	public Long salvarLivro(@Valid LivroDTO livroDto) {
+		Livro livro = new Livro();
+		livro.setNome(livroDto.getTitulo());
+		livro.setQuantidadePaginas(livroDto.getPaginas());
+		return livrosService.salvarLivro(livro);
 	}
 
 }

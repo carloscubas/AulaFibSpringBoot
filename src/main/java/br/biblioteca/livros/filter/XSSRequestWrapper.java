@@ -1,13 +1,14 @@
 package br.biblioteca.livros.filter;
 
 import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-import org.owasp.encoder.Encode;
 import org.owasp.esapi.ESAPI;
 
 public class XSSRequestWrapper extends HttpServletRequestWrapper {
+
  
     public XSSRequestWrapper(HttpServletRequest servletRequest) {
         super(servletRequest);
@@ -36,13 +37,14 @@ public class XSSRequestWrapper extends HttpServletRequestWrapper {
  
         return stripXSS(value);
     }
+    
  
     @Override
     public String getHeader(String name) {
         String value = super.getHeader(name);
         return stripXSS(value);
     }
- 
+  
     private String stripXSS(String value) {
         if (value != null) {
         	

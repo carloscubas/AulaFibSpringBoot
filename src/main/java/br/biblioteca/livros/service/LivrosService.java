@@ -19,8 +19,8 @@ public class LivrosService {
 		return livroRepository.listaLivros();
 	}
 
-	public void salvarLivro(Livro livro) {
-		livroRepository.save(livro);
+	public Long salvarLivro(Livro livro) {
+		return livroRepository.save(livro).getId();
 	}
 
 	public Livro buscaLivro(Long id) {
